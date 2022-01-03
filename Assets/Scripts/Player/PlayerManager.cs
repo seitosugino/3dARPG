@@ -36,4 +36,14 @@ public class PlayerManager : MonoBehaviour
         rb.velocity = new Vector3(x, 0, z) * moveSpeed;
         animator.SetFloat("Speed", rb.velocity.magnitude);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Damager damager = other.GetComponent<Damager>();
+        if (damager != null)
+        {
+            Debug.Log("p!");
+            animator.SetTrigger("Hurt");
+        }
+    }
 }

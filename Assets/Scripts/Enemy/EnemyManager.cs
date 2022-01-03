@@ -21,4 +21,13 @@ public class EnemyManager : MonoBehaviour
         agent.destination = target.position;
         animator.SetFloat("Distance", agent.remainingDistance);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Damager damager = other.GetComponent<Damager>();
+        if (damager != null)
+        {
+            animator.SetTrigger("Hurt");
+        }
+    }
 }
