@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     float x;
     float z;
     public float moveSpeed;
+    public Collider weaponCollider;
 
     Rigidbody rb;
     Animator animator;
@@ -15,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        HideColliderWeapon();
     }
 
     // Update is called once per frame
@@ -35,6 +37,16 @@ public class PlayerManager : MonoBehaviour
 
         rb.velocity = new Vector3(x, 0, z) * moveSpeed;
         animator.SetFloat("Speed", rb.velocity.magnitude);
+    }
+
+    public void HideColliderWeapon()
+    {
+        weaponCollider.enabled = false;
+    }
+
+    public void ShowColliderWeapon()
+    {
+        weaponCollider.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)

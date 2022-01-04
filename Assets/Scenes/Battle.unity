@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  weaponCollider: {fileID: 125254760}
 --- !u!54 &190372649
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -657,6 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 190372650}
+  weaponCollider: {fileID: 1957994156}
 --- !u!195 &936499273
 NavMeshAgent:
   m_ObjectHideFlags: 0
