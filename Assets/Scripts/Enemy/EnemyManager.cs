@@ -9,9 +9,12 @@ public class EnemyManager : MonoBehaviour
     NavMeshAgent agent;
     Animator animator;
     public Collider weaponCollider;
+    int maxHP = 100;
+    int hp;
 
     void Start()
     {
+        hp = maxHP;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.destination = target.position;
@@ -34,12 +37,23 @@ public class EnemyManager : MonoBehaviour
         weaponCollider.enabled = true;
     }
 
+    void Damage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            hp = 0;
+        }
+        Debug.Log("Enemy"+hp);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Damager damager = other.GetComponent<Damager>();
         if (damager != null)
         {
             animator.SetTrigger("Hurt");
+            Damage(damager.damage);
         }
     }
 }
